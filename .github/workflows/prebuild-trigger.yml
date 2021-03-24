@@ -20,8 +20,5 @@ jobs:
           QueueResourceAllocation: false
           LocalCredentialHelper: false
         run: |
-          curl -X GET "https://api.github.com/vscs_internal/user/${{github.actor}}/api/v1/environments" \
-            -H "accept: */*" \
-            -H "Content-Type: application/json" \ 
-            -H "Authorization: github $TOKEN" \
+          curl GET "$ENDPOINT" 
              
