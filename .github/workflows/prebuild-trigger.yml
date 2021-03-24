@@ -20,10 +20,9 @@ jobs:
           QueueResourceAllocation: false
           LocalCredentialHelper: false
         run: |
-          curl
+          curl -H "accept: */*"
            -H "Content-Type: application/json" 
            -H "Authorization: github $TOKEN"
-           -H "accept: */*"
           --data '{
                   "Type": "CloudEnvironment",
                  "FriendlyName": "$FRIENDLYNAME",
