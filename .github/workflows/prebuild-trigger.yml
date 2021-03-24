@@ -20,7 +20,9 @@ jobs:
           QueueResourceAllocation: false
           LocalCredentialHelper: false
         run: |
-          curl -H "accept: */*" \
+          curl -X POST \
+           --url $ENDPOINT
+           -H "accept: */*" \
            -H "Content-Type: application/json" \ 
            -H "Authorization: github $TOKEN" \
           --data '{ 
@@ -65,5 +67,4 @@ jobs:
                     "Identity": null,
                     "GithubEnvironmentEndpoint": null,
                     "CreateAsPrebuild": true
-                 }' \
-                 -X POST "$ENDPOINT"
+                 }' 
