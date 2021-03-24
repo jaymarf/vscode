@@ -20,6 +20,6 @@ jobs:
           QueueResourceAllocation: false
           LocalCredentialHelper: false
         run: |
-          curl "$ENDPOINT" 
+          curl "$ENDPOINT" \
           -H "accept: */*" 
              
