@@ -27,7 +27,7 @@ jobs:
            -H "accept: */*"
           --data '{
                   "Type": "CloudEnvironment",
-                 "FriendlyName": "<github.sha>",
+                 "FriendlyName": "$FRIENDLYNAME",
                 "ExperimentalFeatures": {
                                          "QueueResourceAllocation": false,
                                          "LocalCredentialHelper": false,
@@ -38,7 +38,7 @@ jobs:
                   "Features": {},
                   "Seed": {
                            "type": "Git",
-                           "moniker": "<github.repositoryUrl>",
+                           "moniker": "$MONIKER",
                            "gitConfig": null,
                            "recurseClone": false
                            },
