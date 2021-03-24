@@ -3,10 +3,8 @@ name: Create Prebuild
 
 # Run the workflow only when the devvm.json file has been updated in the master branch.
 on:
-  push:
-    branches: [ main ]
-    paths: .test/test.json
-
+  workflow_dispatch: 
+  
 jobs:
   one:
     runs-on: ubuntu-latest
