@@ -26,5 +26,14 @@ jobs:
         \"name\":\"How to test a REST api from command line with curl – CodepediaOrg\",
         \"location\":\"https://www.codepedia.org/ama/how-to-test-a-rest-api-from-command-line-with-curl/\",
         \"language\":\"en\",
-        \"tags\":[\"rest\",\"curl\",\"api\",\"testing\"],\"publishedOn\":\"2020-03-05\",\"sourceCodeURL\":\"https://github.com/BookmarksDev/bookmarks.dev\",\"description\":\" In this post I will present how to execute GET, POST, PUT, HEAD, DELETE HTTP Requests against a REST API. For the purpose of this blog post I will be using the REST api that supports [www.bookmarks.dev](https://www.bookmarks.dev)\",\"descriptionHtml\":\"<p>In this post I will present how to execute GET, POST, PUT, HEAD, DELETE HTTP Requests against a REST API. For the purpose of this blog post I will be using the REST api that supports <a href=\\\"https://www.bookmarks.dev\\\">www.bookmarks.dev</a></p>\",\"userId\":\"4c617f2b-2bad-498b-a9c6-4e9a8c303798\",\"public\":true,\"lastAccessedAt\":\"2020-03-06T20:14:28.101Z\",\"likeCount\":0}"
+        \"tags\":[\"rest\",\"curl\",\"api\",\"testing\"],
+        \"publishedOn\":\"2020-03-05\",
+        \"sourceCodeURL\":\"https://github.com/BookmarksDev/bookmarks.dev\",
+        \"description\":\" In this post I will present how to execute GET, POST, PUT, HEAD, DELETE HTTP Requests against a REST API. For the purpose of this blog post I will be using the REST api that supports [www.bookmarks.dev](https://www.bookmarks.dev)\",
+        \"descriptionHtml\":\"<p>In this post I will present how to execute GET, POST, PUT, HEAD, DELETE HTTP Requests against a REST API. For the purpose of this blog post I will be using the REST api that supports <a href=\\\"https://www.bookmarks.dev\\\">www.bookmarks.dev</a></p>\",
+        \"userId\":\"4c617f2b-2bad-498b-a9c6-4e9a8c303798\",
+        \"public\":true,
+        \"lastAccessedAt\":\"2020-03-06T20:14:28.101Z\",
+        \"likeCount\":0
+        }"
 
