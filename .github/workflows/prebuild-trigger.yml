@@ -21,4 +21,5 @@ jobs:
           LocalCredentialHelper: false
         run: |
           curl "$ENDPOINT" 
+          -H "accept: */*" 
              
