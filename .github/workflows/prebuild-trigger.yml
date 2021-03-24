@@ -1,10 +1,10 @@
 # Creates a new image version when a new version of the devvm.json file is created.
-name: Create Image Version
+name: Create Prebuild
 
 # Run the workflow only when the devvm.json file has been updated in the master branch.
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths: .test/test.json
 
 jobs:
