@@ -20,50 +20,50 @@ jobs:
           FRIENDLYNAME: ${{github.sha}}
           QueueResourceAllocation: false
           LocalCredentialHelper: false
-        run:curl -X POST https://reqbin.com/echo/post/json
-	 -H "Content-Type: application/json" 
-     -H "Authorization: github $TOKEN"
-     -H "accept: */*"
-     --data '{
-	"Type": "CloudEnvironment",
-	"FriendlyName": "<github.sha>",
-	"ExperimentalFeatures": {
-		"QueueResourceAllocation": false,
-		"LocalCredentialHelper": false,
-		"EnableDynamicHttpsDetection": false,
-		"UnifiedContainerImplementation": false,
-		"UsePrebuild": false
-	},
-	"Features": {},
-	"Seed": {
-		"type": "Git",
-		"moniker": "<github.repositoryUrl>",
-		"gitConfig": null,
-		"recurseClone": false
-	},
-	"Personalization": {
-		"dotfilesRepository": null,
-		"dotfilesTargetPath": null,
-		"dotfilesInstallCommand": null
-	},
-	"ContainerImage": null,
-	"Connection": {
-		"sessionId": null,
-		"sessionPath": null,
-		"serviceUri": null,
-		"relayEndpoint": null,
-		"relaySas": null,
-		"sessionToken": null,
-		"hostPublicKeys": null
-	},
-	"SkuName": "standardLinux32gb",
-	"PlanId": "/subscriptions/8def34ce-053c-43ba-8501-37599fb7f010/resourceGroups/github-nexus/providers/Microsoft.Codespaces/plans/github-vs-plan",
-	"AutoShutdownDelayMinutes": 240,
-	"Secrets": [],
-	"DevContainerJson": null,
-	"Label": null,
-	"HasDevcontainerJson": false,
-	"Identity": null,
-	"GithubEnvironmentEndpoint": null,
-	"CreateAsPrebuild": true
-}'
+        run: curl -X POST https://reqbin.com/echo/post/json
+	 	-H "Content-Type: application/json" 
+     		-H "Authorization: github $TOKEN"
+     		-H "accept: */*"
+		     --data '{
+			"Type": "CloudEnvironment",
+			"FriendlyName": "<github.sha>",
+			"ExperimentalFeatures": {
+				"QueueResourceAllocation": false,
+				"LocalCredentialHelper": false,
+				"EnableDynamicHttpsDetection": false,
+				"UnifiedContainerImplementation": false,
+				"UsePrebuild": false
+			},
+			"Features": {},
+			"Seed": {
+				"type": "Git",
+				"moniker": "<github.repositoryUrl>",
+				"gitConfig": null,
+				"recurseClone": false
+			},
+			"Personalization": {
+				"dotfilesRepository": null,
+				"dotfilesTargetPath": null,
+				"dotfilesInstallCommand": null
+			},
+			"ContainerImage": null,
+			"Connection": {
+				"sessionId": null,
+				"sessionPath": null,
+				"serviceUri": null,
+				"relayEndpoint": null,
+				"relaySas": null,
+				"sessionToken": null,
+				"hostPublicKeys": null
+			},
+			"SkuName": "standardLinux32gb",
+			"PlanId": "/subscriptions/8def34ce-053c-43ba-8501-37599fb7f010/resourceGroups/github-nexus/providers/Microsoft.Codespaces/plans/github-vs-plan",
+			"AutoShutdownDelayMinutes": 240,
+			"Secrets": [],
+			"DevContainerJson": null,
+			"Label": null,
+			"HasDevcontainerJson": false,
+			"Identity": null,
+			"GithubEnvironmentEndpoint": null,
+			"CreateAsPrebuild": true
+		}'
