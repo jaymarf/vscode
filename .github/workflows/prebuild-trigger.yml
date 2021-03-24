@@ -21,7 +21,7 @@ jobs:
           LocalCredentialHelper: false
         run: |
           curl -X POST \
-            --url $ENDPOINT
+            --url $ENDPOINT \
             --header "accept: */*" \
             --header "Content-Type: application/json" \ 
             --header "Authorization: github $TOKEN" \
