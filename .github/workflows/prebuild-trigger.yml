@@ -20,13 +20,13 @@ jobs:
           FRIENDLYNAME: ${{github.sha}}
           QueueResourceAllocation: false
           LocalCredentialHelper: false
-        run: curl -X POST https://reqbin.com/echo/post/json
+        run: curl -X POST "$ENDPOINT"
 	 	-H "Content-Type: application/json" 
-     		-H "Authorization: github $TOKEN"
+     		-H "Authorization: github "$TOKEN"
      		-H "accept: */*"
 		     --data '{
 			"Type": "CloudEnvironment",
-			"FriendlyName": "<github.sha>",
+			"FriendlyName": "FRIENDLYNAME",
 			"ExperimentalFeatures": {
 				"QueueResourceAllocation": false,
 				"LocalCredentialHelper": false,
@@ -37,7 +37,7 @@ jobs:
 			"Features": {},
 			"Seed": {
 				"type": "Git",
-				"moniker": "<github.repositoryUrl>",
+				"moniker": "MONIKER",
 				"gitConfig": null,
 				"recurseClone": false
 			},
