@@ -21,14 +21,14 @@ jobs:
           LocalCredentialHelper: false
         run: |
           curl -X POST \
-           --url $ENDPOINT
-           -H "accept: */*" \
-           -H "Content-Type: application/json" \ 
-           -H "Authorization: github $TOKEN" \
-          --data '{ 
+            --url $ENDPOINT
+            --header "accept: */*" \
+            --header "Content-Type: application/json" \ 
+            --header "Authorization: github $TOKEN" \
+            --data '{ 
                   "Type": "CloudEnvironment",
-                 "FriendlyName": "$FRIENDLYNAME",
-                "ExperimentalFeatures": {
+                  "FriendlyName": "$FRIENDLYNAME",
+                  "ExperimentalFeatures": {
                                          "QueueResourceAllocation": false,
                                          "LocalCredentialHelper": false,
                                          "EnableDynamicHttpsDetection": false,
