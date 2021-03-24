@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: trigger
         env:
-          ENDPOINT:  http://localhost:53760/api/v1/environments
+          ENDPOINT:  https://api.github.com/vscs_internal/user/${{github.actor}}/api/v1/environments
           TYPE: CloudEnvironment
           TOKEN: ${{github.token}}
           MONIKER: ${{github.repositoryUrl}}
