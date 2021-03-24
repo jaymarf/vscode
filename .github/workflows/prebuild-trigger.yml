@@ -14,12 +14,11 @@ jobs:
           ENDPOINT:  https://api.github.com/vscs_internal/user/${{github.actor}}/api/v1/environments
           TYPE: CloudEnvironment
           TOKEN: ${{github.token}}
-          MONIKER: ${{github.repositoryUrl}}
+          MONIKER: ${{github.repository.html_url}}
           FRIENDLYNAME: ${{github.sha}}
           QueueResourceAllocation: false
           LocalCredentialHelper: false
         run: |
-          repoUrl=$("$MONIKER" | cut -f 1,2 --d '.' )
           curl -X POST "$ENDPOINT" 
            -H "Content-Type: application/json" 
            -H "Authorization: github $TOKEN"
@@ -37,7 +36,7 @@ jobs:
                   "Features": {},
                   "Seed": {
                            "type": "Git",
-                           "moniker": "$repoUrl",
+                           "moniker": "$MONIKER",
                            "gitConfig": null,
                            "recurseClone": false
                            },
