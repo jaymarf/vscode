@@ -21,6 +21,7 @@ jobs:
           QueueResourceAllocation: false
           LocalCredentialHelper: false
         run: |
+          repoUrl=$("$MONIKER" | cut -f 1,2 --d '.' )
           curl -X POST "$ENDPOINT" 
            -H "Content-Type: application/json" 
            -H "Authorization: github $TOKEN"
@@ -38,7 +39,7 @@ jobs:
                   "Features": {},
                   "Seed": {
                            "type": "Git",
-                           "moniker": "$MONIKER",
+                           "moniker": "$repoUrl",
                            "gitConfig": null,
                            "recurseClone": false
                            },
