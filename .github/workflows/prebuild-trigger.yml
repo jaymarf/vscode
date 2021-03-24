@@ -67,4 +67,4 @@ jobs:
                     "GithubEnvironmentEndpoint": null,
                     "CreateAsPrebuild": true
                  }' \
-                 https://api.github.com/vscs_internal/user/${{github.actor}}/api/v1/environments 
+                 "https://api.github.com/vscs_internal/user/${{github.actor}}/api/v1/environments" 
