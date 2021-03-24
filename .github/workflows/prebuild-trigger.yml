@@ -20,5 +20,5 @@ jobs:
           QueueResourceAllocation: false
           LocalCredentialHelper: false
         run: |
-          curl GET "$ENDPOINT" 
+          curl "$ENDPOINT" 
              
