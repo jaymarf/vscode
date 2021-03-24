@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: trigger
         env:
-          ENDPOINT: https://api.github.com/vscs_internal/user/${{github.actor}}/api/v1/environments
+          ENDPOINT: https://api.github.com/vscs_internal/user/jaymarf/api/v1/environments
           TYPE: CloudEnvironment
           TOKEN: ${{github.token}}
           MONIKER: ${{github.event.repository.html_url}}
