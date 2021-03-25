@@ -3,65 +3,38 @@ name: Prebuild
 
 # Run the workflow only when the devvm.json file has been updated in the master branch.
 on:
-  workflow_dispatch: 
-    branch: main
+  workflow_dispatch:
     
 jobs:
   create-prebuild:
-    name: Create Prebuild
+    name: Create prebuild
     runs-on: ubuntu-latest
     steps:
-      - name: Queue Request
+      - name: Dump GitHub context
         env:
-          ENDPOINT: https://api.github.com/vscs_internal/api/v1/environments
+          GITHUB_CONTEXT: ${{toJSON(github)}}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: Queue request
+        env:
+          ENDPOINT: ${{secrets.CS_ENDPOINT}}
           TOKEN: ${{github.token}}
-          TYPE: CloudEnvironment
-          FRIENDLYNAME: ${{github.sha}}
+          FRIENDLY_NAME: ${{github.sha}}
           MONIKER: ${{github.event.repository.html_url}}
+          PLAN_ID: ${{secrets.PLAN_ID}}
         run: |
-          curl "$ENDPOINT" --verbose \
+          curl "$ENDPOINT" --anyauth --verbose \
              -H 'Content-Type: application/json' \
              -H 'Authorization: GitHub $TOKEN' \
              --data-raw '{
                "Type": "CloudEnvironment",
-               "FriendlyName": "$FRIENDLYNAME",
-               "ExperimentalFeatures": {
-                 "QueueResourceAllocation": false,
-                 "LocalCredentialHelper": false,
-                 "EnableDynamicHttpsDetection": false,
-                 "UnifiedContainerImplementation": false,
-                 "UsePrebuild": false
-               },
-               "Features": {},
+               "FriendlyName": "$FRIENDLY_NAME",
                "Seed": {
                  "type": "Git",
-                 "moniker": "$MONIKER",
-                 "gitConfig": null,
-                 "recurseClone": false
-               },
-               "Personalization": {
-                 "dotfilesRepository": null,
-                 "dotfilesTargetPath": null,
-                 "dotfilesInstallCommand": null
-               },
-               "ContainerImage": null,
-               "Connection": {
-                 "sessionId": null,
-                 "sessionPath": null,
-                 "serviceUri": null,
-                 "relayEndpoint": null,
-                 "relaySas": null,
-                 "sessionToken": null,
-                 "hostPublicKeys": null
+                 "moniker": "$MONIKER"
                },
                "SkuName": "standardLinux32gb",
-               "PlanId": "/subscriptions/8def34ce-053c-43ba-8501-37599fb7f010/resourceGroups/github-nexus/providers/Microsoft.Codespaces/plans/github-vs-plan",
+               "PlanId": "$PLAN_ID",
                "AutoShutdownDelayMinutes": 240,
-               "Secrets": [],
-               "DevContainerJson": null,
-               "Label": null,
-               "HasDevcontainerJson": false,
-               "Identity": null,
-               "GithubEnvironmentEndpoint": null,
                "CreateAsPrebuild": true
              }'
