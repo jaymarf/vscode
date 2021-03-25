@@ -23,7 +23,7 @@ jobs:
           MONIKER: ${{github.event.repository.html_url}}
           PLAN_ID: ${{secrets.PLAN_ID}}
         run: |
-          curl "$ENDPOINT" --anyauth --verbose \
+          curl -L "$ENDPOINT" --anyauth --verbose \
              -H 'Content-Type: application/json' \
              -H 'Authorization: GitHub $TOKEN' \
              --data-raw '{
