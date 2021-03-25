@@ -1,5 +1,5 @@
 # Creates a new image version when a new version of the devvm.json file is created.
-name: Create Prebuild
+name: Prebuild
 
 # Run the workflow only when the devvm.json file has been updated in the master branch.
 on:
@@ -7,18 +7,61 @@ on:
     branch: main
     
 jobs:
-  one:
+  create-prebuild:
+    name: Create Prebuild
     runs-on: ubuntu-latest
     steps:
-      - name: trigger
+      - name: Queue Request
         env:
-          ENDPOINT: https://api.github.com/vscs_internal/user/${{github.actor}}/api/v1/environments
-          TYPE: CloudEnvironment
+          ENDPOINT: https://api.github.com/vscs_internal/api/v1/environments
           TOKEN: ${{github.token}}
-          MONIKER: ${{github.event.repository.html_url}}
+          TYPE: CloudEnvironment
           FRIENDLYNAME: ${{github.sha}}
-          QueueResourceAllocation: false
-          LocalCredentialHelper: false
-        uses: wei/curl@master
-        with:
-           args: -X POST https://online.dev.core.vsengsaas.visualstudio.com/api/v1/environments --data '{"Type":"CloudEnvironment","FriendlyName":"$FRIENDLYNAME","ExperimentalFeatures":{"QueueResourceAllocation":false,"LocalCredentialHelper":false,"EnableDynamicHttpsDetection":false,"UnifiedContainerImplementation":false,"UsePrebuild":false},"Features":{},"Seed":{"type":"Git","moniker":"$MONIKER","gitConfig":null,"recurseClone":false},"Personalization":{"dotfilesRepository":null,"dotfilesTargetPath":null,"dotfilesInstallCommand":null},"ContainerImage":null,"Connection":{"sessionId":null,"sessionPath":null,"serviceUri":null,"relayEndpoint":null,"relaySas":null,"sessionToken":null,"hostPublicKeys":null},"SkuName":"standardLinux32gb","PlanId":"/subscriptions/8def34ce-053c-43ba-8501-37599fb7f010/resourceGroups/github-nexus/providers/Microsoft.Codespaces/plans/github-vs-plan","AutoShutdownDelayMinutes":240,"Secrets":[],"DevContainerJson":null,"Label":null,"HasDevcontainerJson":false,"Identity":null,"GithubEnvironmentEndpoint":null,"CreateAsPrebuild":true}'
+          MONIKER: ${{github.event.repository.html_url}}
+        run: |
+          curl "$ENDPOINT" --verbose \
+             -H 'Content-Type: application/json' \
+             -H 'Authorization: GitHub $TOKEN' \
+             --data-raw '{
+               "Type": "CloudEnvironment",
+               "FriendlyName": "$FRIENDLYNAME",
+               "ExperimentalFeatures": {
+                 "QueueResourceAllocation": false,
+                 "LocalCredentialHelper": false,
+                 "EnableDynamicHttpsDetection": false,
+                 "UnifiedContainerImplementation": false,
+                 "UsePrebuild": false
+               },
+               "Features": {},
+               "Seed": {
+                 "type": "Git",
+                 "moniker": "$MONIKER",
+                 "gitConfig": null,
+                 "recurseClone": false
+               },
+               "Personalization": {
+                 "dotfilesRepository": null,
+                 "dotfilesTargetPath": null,
+                 "dotfilesInstallCommand": null
+               },
+               "ContainerImage": null,
+               "Connection": {
+                 "sessionId": null,
+                 "sessionPath": null,
+                 "serviceUri": null,
+                 "relayEndpoint": null,
+                 "relaySas": null,
+                 "sessionToken": null,
+                 "hostPublicKeys": null
+               },
+               "SkuName": "standardLinux32gb",
+               "PlanId": "/subscriptions/8def34ce-053c-43ba-8501-37599fb7f010/resourceGroups/github-nexus/providers/Microsoft.Codespaces/plans/github-vs-plan",
+               "AutoShutdownDelayMinutes": 240,
+               "Secrets": [],
+               "DevContainerJson": null,
+               "Label": null,
+               "HasDevcontainerJson": false,
+               "Identity": null,
+               "GithubEnvironmentEndpoint": null,
+               "CreateAsPrebuild": true
+             }'
