@@ -17,8 +17,8 @@ jobs:
 
       - name: Queue request
         env:
-          ENDPOINT: ${{secrets.CS_ENDPOINT}}
-          TOKEN: ${{github.token}}
+          ENDPOINT: ${{secrets.ENDPOINT_DEV}}
+          TOKEN: ${{secrets.GITTOKEN}
           FRIENDLY_NAME: ${{github.sha}}
           MONIKER: ${{github.event.repository.html_url}}
           PLAN_ID: ${{secrets.PLAN_ID}}
